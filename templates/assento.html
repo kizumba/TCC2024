@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>Assento</h1>
+<hr>
+<div>
+    <p>Fileira <b>{{fileira.upper()}}</b> assento <b>{{j}}</b></p>
+</div>
+<hr>
+<a href="{{url_for('evento')}}">Voltar</a>
+
+{% endblock %}

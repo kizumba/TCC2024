@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>Gerenciador de Evento</h1>
+<hr>
+<div>
+<h3>Selecione o assento para ocupar.</h3>
+<table border="2">
+    {% for fileira in 'ABCDEFGHIJKLMNOPQRSTU' %}
+        <tr>
+            <th>
+                {{fileira}}
+            </th>
+        {% for j in range(25) %}
+            <td>
+                {{j+1}}<a href="/assento/{{fileira}}/{{j+1}}"><img width="22" height="22" src="{{ url_for('static', filename='imagens/verde.png')}}"></a>
+            </td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+</div>
+<hr>
+
+{% endblock %}
