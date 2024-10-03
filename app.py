@@ -1,7 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask
 from database import db
 from flask_migrate import Migrate
-
 
 app = Flask(__name__)
 
