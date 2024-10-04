@@ -5,10 +5,7 @@ from flask import render_template
 @app.route('/')
 @app.route('/index')
 def index():
-    usuarios = Usuario.query.all()
-
-    return render_template('index.html', usuarios=usuarios)
-    #return render_template('index.html')
+    return render_template('index.html')
 
 @app.route('/evento')
 def evento():
