@@ -1,13 +1,14 @@
 from app import app
 from flask import render_template
-from models import User
+from models import *
 
 @app.route('/')
 @app.route('/index')
 def index():
-    users = User.query.all()
+    usuarios = Usuario.query.all()
 
-    return render_template('index.html', users=users)
+    return render_template('index.html', usuarios=usuarios)
+    #return render_template('index.html')
 
 @app.route('/evento')
 def evento():
