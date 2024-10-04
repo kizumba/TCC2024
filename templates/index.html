@@ -3,30 +3,54 @@
 {% block conteudo %}
 <h1>Gerenciador de Assentos para o Teatro São Francisco</h1>
 <hr>
-<table class="table">
+<h3>Criar novo Evento</h3>
+
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1"></span>
+  <input type="text" class="form-control" placeholder="Nome do evento" aria-label="Username" aria-describedby="basic-addon1" name="nome">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1"></span>
+  <input type="text" class="form-control" placeholder="Descrição" aria-label="Username" aria-describedby="basic-addon1" name="descricao">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1"></span>
+  <input type="text" class="form-control" placeholder="Data" aria-label="Username" aria-describedby="basic-addon1" name="data">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1"></span>
+  <input type="text" class="form-control" placeholder="Hora" aria-label="Username" aria-describedby="basic-addon1" name="hora">
+</div>
+<button type="button" class="btn btn-primary">Criar Evento</button>
+
+<hr>
+<h3>Eventos cadastrados</h3>
+<table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Nome</th>
-        <th scope="col">Email</th>
-        <th scope="col">Telefone</th>
-        <th scope="col">Apelido</th>
-        <th scope="col">Admin</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Data</th>
+        <th scope="col">Hora Início</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody>
-    <!-- {% for u in usuarios %}
+      {% for e in eventos %} 
       <tr>
-        <th scope="row">{{u.usuario_id}}</th>
-        <td>{{u.nome}}</td>
-        <td>{{u.email}}</td>
-        <td>{{u.telefone}}</td>
-        <td>{{u.apelido}}</td>
-        <td>{{u.admin}}</td>
-        <td>Editar | Excluir</td>
+        <th scope="row">{{e.id}}</th>
+        <td>{{e.nome}}</td>
+        <td>{{e.descricao}}</td>
+        <td>{{e.data}}</td>
+        <td>{{e.hora_inicio}}</td>
+        <td>
+          <a class="btn btn-success" role="button" aria-disabled="true" href="/evento/{{e.id}}">Visualizar</a> |
+          <a class="btn btn-warning" role="button" aria-disabled="true">Editar</a> |
+          <a class="btn btn-danger" role="button" aria-disabled="true">Excluir</a>
+        </td>
       </tr>
-    {% endfor %} -->
+      {% endfor %}
     </tbody>
   </table>
   

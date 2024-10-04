@@ -3,10 +3,23 @@
 {% block conteudo %}
 <h1>Assento</h1>
 <hr>
+
 <div>
-    <p>Fileira <b>{{fileira.upper()}}</b> assento <b>{{j}}</b></p>
+    <p>Fileira <b>{{fileira.upper()}}</b> assento <b>{{j}}</b> livre.</p>
 </div>
 <hr>
-<a href="{{url_for('evento')}}">Voltar</a>
+
+<h3>Valor do Ingresso</h3>
+<div class="input-group mb-3">
+    <span class="input-group-text">R$</span>
+    <!-- <span class="input-group-text">0.00</span> -->
+    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" id="preco" name="preco" required>
+</div>
+<!-- <button type="button" class="btn btn-success">Validar venda!</button> -->
+
+<a class="btn btn-success" role="button" aria-disabled="true" href="/venda">Validar</a>
+  
+<hr>
+<a href="{{url_for('evento',id=id)}}">Voltar ao Evento nº {{id}}</a>
 
 {% endblock %}
