@@ -19,6 +19,9 @@ class Evento(db.Model):
     descricao = db.Column(db.String(256))
     data = db.Column(db.String(10))
     hora_inicio = db.Column(db.String(5))
+
+    lotacao = db.Column(db.Integer)
+    arrecadacao = db.Column(db.Float)
     
     #um evento muito assentos
     assentos = db.relationship('Assento', back_populates='evento')

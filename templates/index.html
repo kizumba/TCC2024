@@ -34,6 +34,8 @@
         <th scope="col">Descrição</th>
         <th scope="col">Data</th>
         <th scope="col">Hora Início</th>
+        <th scope="col">Lotação</th>
+        <th scope="col">Arrecadação</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
@@ -45,9 +47,12 @@
         <td>{{e.descricao}}</td>
         <td>{{e.data}}</td>
         <td>{{e.hora_inicio}}</td>
+        <td>{{e.lotacao}}</td>
+        <td>R${{e.arrecadacao}}</td>
+
         <td>
           <a class="btn btn-success" role="button" aria-disabled="true" href="/evento/{{e.id}}">Gerir</a> |
-          <a class="btn btn-warning" role="button" aria-disabled="true">Editar</a> |
+          <a class="btn btn-warning" role="button" aria-disabled="true" href="/evento_editar/{{e.id}}">Editar</a> |
           <a class="btn btn-danger" role="button" aria-disabled="true">Excluir</a>
         </td>
       </tr>

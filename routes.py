@@ -11,6 +11,19 @@ import dados
 def index():
     eventos = Evento.query.all()
 
+    for evento in eventos:  
+        lotacao = 0
+        arrecadacao = 0
+        for assento in evento.assentos:
+            if not assento.livre:
+                lotacao += 1
+                arrecadacao += assento.preco
+        evento.arrecadacao = arrecadacao
+        evento.lotacao = lotacao
+
+        db.session.commit()
+
+
     if request.method=='GET':
         return render_template('index.html', eventos=eventos)
     
@@ -43,6 +56,23 @@ def evento(id):
 
     if evento:
         return render_template('evento.html',evento=evento, fileira=dados.FILEIRA, cadeiras=dados.CADEIRAS, assentos=assentos)
+
+@app.route('/evento_editar/<int:id>', methods=['GET','POST'])
+def evento_editar(id):
+    evento = Evento.query.get(id)
+    if request.method=='GET':
+        return render_template('evento_editar.html', evento=evento)
+    
+    if request.method=='POST':
+        evento.nome = request.form.get('nome')
+        evento.descricao = request.form.get('descricao')
+        evento.data = request.form.get('data')
+        evento.hora_inicio = request.form.get('hora')
+
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
 
 #-------------------
 #   ASSENTO
