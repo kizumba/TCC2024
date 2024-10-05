@@ -88,15 +88,34 @@ def assento(fileira,numero,id):
             assento = a
 
     if request.method=='GET':
-        print('GET',assento)
         return render_template('assento.html',fileira=fileira, numero=numero, evento=evento, assento=assento)
     
     if request.method=='POST':
         assento.preco = request.form.get('preco')
         assento.livre = False
         db.session.commit()
-        # return render_template(url_for('evento',id=id))
-        return redirect(url_for('assento',fileira=fileira,numero=numero,id=id))
+
+        return redirect(url_for('evento',id=id))
+
+@app.route('/assento_liberar/<fileira>/<int:numero>/<int:id>')
+def assento_liberar(fileira, numero, id):
+    evento = Evento.query.get(id)
+    assentos = Assento.query.filter_by(evento_id=id).all()
+    assento = None
+
+    for a in assentos:        
+        if a.fileira == fileira and a.numero == numero:
+            assento = a
+
+
+    if assento:
+        assento.livre = True
+        assento.preco = 0.0
+        db.session.commit()
+
+    return redirect(url_for('evento',id=id))
+
+    
 
 #-------------------
 #   CLIENTE

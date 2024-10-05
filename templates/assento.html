@@ -19,11 +19,21 @@
 <form action="/assento/{{fileira}}/{{numero}}/{{evento.id}}" method="post">
     <div class="input-group mb-3">
         <span class="input-group-text">R$</span>
-        <input type="text" class="form-control" aria-label="" id="preco" name="preco" required>
+        <span class="input-group-text">0.00</span>
+        <input type="text" class="form-control" aria-label="" id="preco" name="preco"  {% if assento.livre %} required {% endif %} 
+        {% if not assento.livre %} disabled {% endif %} >
     </div>
         <button type="submit" class="btn btn-success" 
             {% if not assento.livre %} disabled {% endif %}>
             Validar venda!
+        </button>
+</form>
+<hr>
+<h4>Liberar assento</h4>
+<form action="/assento_liberar/{{fileira}}/{{numero}}/{{evento.id}}"> 
+    <button type="submit" class="btn btn-danger" 
+            {% if assento.livre %} disabled {% endif %}>
+            Liberar!
         </button>
 </form>
   
