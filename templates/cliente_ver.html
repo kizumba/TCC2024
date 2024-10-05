@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>Cliente <i>{{cliente.nome}}</i></h1>
+<hr>
+
+<h3>Dados Clientes</h3>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"></span>
+        <input type="text" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1" name="nome" value="{{cliente.nome}}">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"></span>
+        <input type="text" class="form-control" placeholder="CPF" aria-label="Username" aria-describedby="basic-addon1" name="cpf" value="{{cliente.cpf}}">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"></span>
+        <input type="text" class="form-control" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1" name="email" value="{{cliente.email}}">
+    </div>
+
+  <hr>
+
+  <h3>Eventos Relacionados</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Data</th>
+        <th scope="col">Hora Início</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for evento in lista_eventos %} 
+      <tr>
+        <th scope="row">{{evento.id}}</th>
+        <td>{{evento.nome}}</td>
+        <td>{{evento.descricao}}</td>
+        <td>{{evento.data}}</td>
+        <td>{{evento.hora_inicio}}</td>
+        <td>
+          <a class="btn btn-success" role="button" aria-disabled="true" href="">Visualizar</a> |
+          <a class="btn btn-warning" role="button" aria-disabled="true">Editar</a> |
+          <a class="btn btn-danger" role="button" aria-disabled="true">Excluir</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- <button type="button" class="btn btn-success">Validar venda!</button> -->
+  <!-- <a class="btn btn-success" role="button" aria-disabled="true" href="">Salvar</a> -->
+  
+<hr>
+<a href="{{url_for('cliente_lista')}}">Voltar</a>
+
+{% endblock %}

@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
-conexao = 'sqlite:///meubanco.db'
+conexao = 'sqlite:///tcc400.db'
 
 app.config['SECRET_KEY'] = 'malmsteen o mestre'
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao

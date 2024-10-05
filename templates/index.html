@@ -4,24 +4,25 @@
 <h1>Gerenciador de Assentos para o Teatro São Francisco</h1>
 <hr>
 <h3>Criar novo Evento</h3>
-
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" class="form-control" placeholder="Nome do evento" aria-label="Username" aria-describedby="basic-addon1" name="nome">
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" class="form-control" placeholder="Descrição" aria-label="Username" aria-describedby="basic-addon1" name="descricao">
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" class="form-control" placeholder="Data" aria-label="Username" aria-describedby="basic-addon1" name="data">
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" class="form-control" placeholder="Hora" aria-label="Username" aria-describedby="basic-addon1" name="hora">
-</div>
-<button type="button" class="btn btn-primary">Criar Evento</button>
+<form action="/index" method="post">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="Nome do evento" aria-label="Username" aria-describedby="basic-addon1" name="nome" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="Descrição" aria-label="Username" aria-describedby="basic-addon1" name="descricao" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" name="data" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="hh:mm" aria-label="Username" aria-describedby="basic-addon1" name="hora" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Criar Evento</button>
+</form>
 
 <hr>
 <h3>Eventos cadastrados</h3>

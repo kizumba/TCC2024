@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>Gerenciador de Assentos para o Teatro São Francisco</h1>
+<hr>
+
+<h2>Progresso do TCC400</h2>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Relatório final
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Vídeo do projeto [link]
+    </label>
+  </div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Gerenciamento de evento
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+      Gerenciamento de Assentos
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+      Gerenciamento de Clientes
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+      Função de Atualização das páginas
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Banco de Dados
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Interfaces graficas
+    </label>
+  </div>
+  <hr>
+  <h3>Professor</h3>
+  <b>Robson Franklin de Aguiar Couto</b>
+  <hr>
+
+  <h3>Grupo</h3>
+  <ul>
+    <li>Alexandre B - RA1825057</li>
+    <li>André L - RA1803854</li>
+    <li>Carlos E - RA1705528 </li>
+    <li>Delson C - RA1821276</li>
+    <li>Iara P - RA1801774</li>
+    <li>Leonardo M - RA1819446</li>
+    <li>Luiz O - RA1802816</li>
+    <li>Nelson F - RA1715435</li>
+  </ul>
+  <hr>
+
+  <h3>Atualizações do sistema</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Versão</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Funções</th>
+        <th scope="col">Banco de Dados</th>
+        <th scope="col">Interfaces Gráficas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">0.0.0</th>
+        <td>Protótipos das interfaces criadas</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Index e progresso</td>
+      </tr>
+      <tr>
+        <th scope="row">0.0.1</th>
+        <td>Protótipos das interfaces criadas</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Evento e Cliente</td>
+      </tr>
+      <th scope="row">0.1.0</th>
+        <td>Banco de dados criado</td>
+        <td>-</td>
+        <td>Cliente, Evento, Assento e Cliente_Evento</td>
+        <td>-</td>
+      </tr>
+      <th scope="row">0.1.1</th>
+        <td>Banco de dados atualizado</td>
+        <td>-</td>
+        <td>Usuario</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

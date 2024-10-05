@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>Gerenciador de Assentos para o Teatro São Francisco</h1>
+<hr>
+<h3>Criar novo Cliente</h3>
+<form action="/cliente_lista" method="post">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1" name="nome" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="CPF" aria-label="Username" aria-describedby="basic-addon1" name="cpf" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1" name="email" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Criar</button>
+</form>
+<hr>
+<h3>Clientes Cadastrados</h3>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Email</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in clientes %} 
+      <tr>
+        <th scope="row">{{e.id}}</th>
+        <td>{{e.nome}}</td>
+        <td>{{e.cpf}}</td>
+        <td>{{e.email}}</td>
+        <td>
+          <a class="btn btn-success" role="button" aria-disabled="true" href="/cliente_ver/{{e.id}}">Visualizar</a> |
+          <a class="btn btn-warning" role="button" aria-disabled="true">Editar</a> |
+          <a class="btn btn-danger" role="button" aria-disabled="true">Excluir</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+{% endblock %}
