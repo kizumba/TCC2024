@@ -109,6 +109,36 @@
         <td>Usuario</td>
         <td>-</td>
       </tr>
+      <th scope="row">0.2.0</th>
+        <td>Funções de rotas criadas</td>
+        <td>index, evento, assento, usuario</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <th scope="row">0.2.1</th>
+        <td>Rotas acessando a base de dados, tabelas atualizadas e interfaces atualizadas</td>
+        <td>index, evento, assento, usuario</td>
+        <td>Tabelas alteradas para usar o campo data do tipo varchar</td>
+        <td>Interfaces bloqueiam campos vazios.</td>
+      </tr>
+      <th scope="row">0.3.0</th>
+        <td>Aplicação online para testes</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <th scope="row">0.3.1</th>
+        <td>Rota index gera os assentos automaticamente.</td>
+        <td>index() gera assentos na criação de um novo evento</td>
+        <td>Os assentos são inseridos com o código do evento na chave estrangeira</td>
+        <td>Evento gera as imagens dos lugares</td>
+      </tr>
+      <th scope="row">0.3.2</th>
+        <td>Rota evento atualiza a imagem dos lugares livres.</td>
+        <td>evento()</td>
+        <td>assentos</td>
+        <td>evento.html</td>
+      </tr>
     </tbody>
   </table>
 {% endblock %}

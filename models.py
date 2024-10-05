@@ -83,14 +83,16 @@ class Assento(db.Model):
     evento_id = db.Column(db.Integer, db.ForeignKey('eventos.id'))
     evento = db.relationship('Evento', back_populates='assentos')
 
-    def __init__(self, fileira, numero, livre, preco):
+    def __init__(self, fileira, numero, livre, preco, evento_id):
         self.fileira = fileira
         self.numero = numero
         self.livre = livre
         self.preco = preco
+        self.evento_id = evento_id
 
     def __repr__(self):
-        return "Assento da Fileira {}, Número {}, Ocupado {}.".format(self.fileira, self.numero, self.livre)
+        return "Fileira: {}, Número: {}, Ocupado: {}.".format(self.fileira, self.numero, self.livre)
+        # return "{}, {}, {}, {}, {}\n".format(self.fileira, self.numero, self.livre, self.preco, self.evento_id)
 
 #---------------------------
 #   USUÁRIOS

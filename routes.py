@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template, request, redirect, url_for, flash
 from models import *
+import dados
 
 #-------------------
 #   EVENTO
@@ -22,7 +23,15 @@ def index():
         
         evento = Evento(nome, descricao, data, hora, usuario_id)
         if evento:
+            
             db.session.add(evento)
+            db.session.commit()
+            
+            for fileira in dados.FILEIRA:
+                for cadeira in range(dados.CADEIRAS):
+                    assento = Assento(fileira, cadeira+1, True, 0.00, evento.id)
+                    db.session.add(assento)
+            
             db.session.commit()
 
         return redirect(url_for('index'))
@@ -30,17 +39,34 @@ def index():
 @app.route('/evento/<int:id>')
 def evento(id):
     evento = Evento.query.get(id)
+    assentos = Assento.query.filter_by(evento_id=evento.id).all()
+
     if evento:
-        return render_template('evento.html',evento=evento)
+        return render_template('evento.html',evento=evento, fileira=dados.FILEIRA, cadeiras=dados.CADEIRAS, assentos=assentos)
 
 #-------------------
 #   ASSENTO
 #-------------------
-@app.route('/assento/<fileira>/<int:numero>/<int:id>')
+@app.route('/assento/<fileira>/<int:numero>/<int:id>', methods=['GET','POST'])
 def assento(fileira,numero,id):
     evento = Evento.query.get(id)
-    livre = False
-    return render_template('assento.html',fileira=fileira, numero=numero, evento=evento, livre=livre)
+    assentos = Assento.query.filter_by(evento_id=id).all()
+    assento = None
+
+    for a in assentos:        
+        if a.fileira == fileira and a.numero == numero:
+            assento = a
+
+    if request.method=='GET':
+        print('GET',assento)
+        return render_template('assento.html',fileira=fileira, numero=numero, evento=evento, assento=assento)
+    
+    if request.method=='POST':
+        assento.preco = request.form.get('preco')
+        assento.livre = False
+        db.session.commit()
+        # return render_template(url_for('evento',id=id))
+        return redirect(url_for('assento',fileira=fileira,numero=numero,id=id))
 
 #-------------------
 #   CLIENTE

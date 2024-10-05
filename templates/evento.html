@@ -1,27 +1,43 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
+
 <h1>Gerenciador de Evento {{evento.id}} - {{evento.nome}}</h1>
 <hr>
 <h4 align="center">Palco está nesta posição</h4>
 <div align="center">
 <h4>Selecione o assento para ocupar.</h4>
 <table border="2">
-    {% for fileira in 'ABCDEFGHIJKLMNOPQRSTU' %}
+    <tr>
+        <th>@</th>
+        {% for col in range(cadeiras) %}
+            <th>{{col+1}}</th>
+        {% endfor %}
+    </tr>
+    {% for linha in fileira %}
         <tr>
             <th>
-                {{fileira}}
+                {{linha}}
             </th>
-        {% for j in range(25) %}
+        {% for coluna in range(cadeiras) %}
             <td>
-                {{j+1}}<a href="/assento/{{fileira}}/{{j+1}}/{{evento.id}}"><img width="22" height="22" src="{{ url_for('static', filename='imagens/verde.png')}}"></a>
+            {% for assento in assentos %}
+                {% if assento.fileira == linha and assento.numero == coluna+1 %}
+                    {% if assento.livre %}
+                        <a href="/assento/{{linha}}/{{coluna+1}}/{{evento.id}}">
+                            <img width="22" height="22" src="{{ url_for('static', filename='imagens/verde.png')}}">
+                        </a>
+                    {% else %}
+                        <a href="/assento/{{linha}}/{{coluna+1}}/{{evento.id}}">
+                            <img width="22" height="22" src="{{ url_for('static', filename='imagens/vermelho.png')}}">
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endfor%}
             </td>
         {% endfor %}
         </tr>
     {% endfor %}
 </table>
 </div>
-<hr>
-<a href="/index">Voltar</a>
-
 {% endblock %}

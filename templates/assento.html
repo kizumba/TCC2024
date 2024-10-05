@@ -6,8 +6,9 @@
 <h3>Evento {{evento.nome}}</h3>
 <div>
     <p>Fileira <b>{{fileira.upper()}}</b> assento <b>{{numero}}</b>.</p>
-    {% if livre %}
-        Assento Livre: <img width="22" height="22" src="{{ url_for('static', filename='imagens/verde.png')}}">
+
+    {% if assento.livre %}
+        {{assento.livre}} Assento Livre: <img width="22" height="22" src="{{ url_for('static', filename='imagens/verde.png')}}">
     {% else %}
         Assento Ocupado: <img width="22" height="22" src="{{ url_for('static', filename='imagens/vermelho.png')}}">
     {% endif %}
@@ -15,19 +16,18 @@
 <hr>
 
 <h4>Inserir Valor do Ingresso</h4>
-<form action="{{url_for('evento',id=evento.id)}}" method="post">
+<form action="/assento/{{fileira}}/{{numero}}/{{evento.id}}" method="post">
     <div class="input-group mb-3">
         <span class="input-group-text">R$</span>
-        <!-- <span class="input-group-text">0.00</span> -->
         <input type="text" class="form-control" aria-label="" id="preco" name="preco" required>
     </div>
-    <button type="submit" class="btn btn-success" {% if not livre %} disabled {% endif %}>Validar venda!</button>
+        <button type="submit" class="btn btn-success" 
+            {% if not assento.livre %} disabled {% endif %}>
+            Validar venda!
+        </button>
 </form>
-
-
-<!-- <a class="btn btn-success" role="button" aria-disabled="true" href="/venda">Validar</a> -->
   
 <hr>
-<a href="{{url_for('evento',id=evento.id)}}">Voltar ao Evento nº {{evento.id}}</a>
+<a class="btn btn-info" href="{{url_for('evento',id=evento.id)}}" role="button">Evento {{evento.nome}}</a>
 
 {% endblock %}
