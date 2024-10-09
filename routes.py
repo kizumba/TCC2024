@@ -55,7 +55,12 @@ def evento(id):
     assentos = Assento.query.filter_by(evento_id=evento.id).all()
 
     if evento:
-        return render_template('evento.html',evento=evento, fileira=dados.FILEIRA, cadeiras=dados.CADEIRAS, assentos=assentos)
+        return render_template('evento.html', 
+                               evento=evento, 
+                               fileira=dados.FILEIRA, 
+                               cadeiras=dados.CADEIRAS, 
+                               assentos=assentos
+                            )
 
 @app.route('/evento_editar/<int:id>', methods=['GET','POST'])
 def evento_editar(id):
@@ -69,6 +74,15 @@ def evento_editar(id):
         evento.data = request.form.get('data')
         evento.hora_inicio = request.form.get('hora')
 
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+@app.route('/evento_apagar/<int:id>')
+def evento_apagar(id):
+    evento = Evento.query.get(id)
+    if evento:
+        db.session.delete(evento)
         db.session.commit()
 
         return redirect(url_for('index'))

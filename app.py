@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
+
 conexao = 'sqlite:///tcc400.db'
 
 app.config['SECRET_KEY'] = 'malmsteen o mestre'
@@ -19,5 +20,4 @@ import routes
 if __name__=='__main__':
     with app.app_context():
         db.create_all()
-
     app.run()

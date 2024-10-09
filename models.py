@@ -24,7 +24,7 @@ class Evento(db.Model):
     arrecadacao = db.Column(db.Float)
     
     #um evento muito assentos
-    assentos = db.relationship('Assento', back_populates='evento')
+    assentos = db.relationship('Assento', back_populates='evento', cascade="all, delete")
 
     #muito eventos um usuário
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'))
@@ -95,7 +95,6 @@ class Assento(db.Model):
 
     def __repr__(self):
         return "Fileira: {}, Número: {}, Ocupado: {}.".format(self.fileira, self.numero, self.livre)
-        # return "{}, {}, {}, {}, {}\n".format(self.fileira, self.numero, self.livre, self.preco, self.evento_id)
 
 #---------------------------
 #   USUÁRIOS

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block conteudo %}
 <h1>Assento</h1>
 <hr>
@@ -14,7 +13,6 @@
     {% endif %}
 </div>
 <hr>
-
 <h4>Inserir Valor do Ingresso</h4>
 <form action="/assento/{{fileira}}/{{numero}}/{{evento.id}}" method="post">
     <div class="input-group mb-3">
@@ -36,8 +34,6 @@
             Liberar!
         </button>
 </form>
-  
 <hr>
 <a class="btn btn-info" href="{{url_for('evento',id=evento.id)}}" role="button">Evento {{evento.nome}}</a>
-
 {% endblock %}
