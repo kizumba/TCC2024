@@ -6,22 +6,22 @@
 <h3>Editar Evento: <i>{{evento.nome}}</i></h3>
 <form action="/evento_editar/{{evento.id}}" method="post">
   <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1"></span>
+    <span class="input-group-text" id="basic-addon1">Nome</span>
     <input type="text" class="form-control" 
         placeholder="Nome do evento" aria-label="Username" aria-describedby="basic-addon1" name="nome" required value="{{evento.nome}}">
   </div>
   <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1"></span>
+    <span class="input-group-text" id="basic-addon1">Descrição</span>
     <input type="text" class="form-control" 
         placeholder="Descrição" aria-label="Username" aria-describedby="basic-addon1" name="descricao" required value="{{evento.descricao}}">
   </div>
   <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1"></span>
+    <span class="input-group-text" id="basic-addon1">Data</span>
     <input type="text" class="form-control" 
         placeholder="dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" name="data" required value="{{evento.data}}">
   </div>
   <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1"></span>
+    <span class="input-group-text" id="basic-addon1">Hora</span>
     <input type="text" class="form-control" 
         placeholder="hh:mm" aria-label="Username" aria-describedby="basic-addon1" name="hora" required value="{{evento.hora_inicio}}">
   </div>
