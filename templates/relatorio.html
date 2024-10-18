@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1>Relatórios</h1>
+<hr>
+
+<h3>Arrecadação</h3>
+<p align="center">Valor total arrecadado com eventos <b>R${{total}}</b></p>
+<hr>
+
+<h3>Eventos</h3>
+<hr>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Visitantes</th>
+        <th scope="col">Arrecadação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in eventos %} 
+      <tr>
+        <th scope="row">{{e.id}}</th>
+        <td>{{e.nome}}</td>
+        <td>{{e.lotacao}}/{{publico}}</td>
+        <td>R${{e.arrecadacao}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

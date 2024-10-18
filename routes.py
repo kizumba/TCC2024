@@ -167,3 +167,15 @@ def cliente_ver(id):
 @app.route('/progresso')
 def progresso():
     return render_template('progresso.html')
+
+@app.route('/relatorio')
+def relatorio():
+    eventos = Evento.query.all()
+
+    total = 0.0
+    publico = dados.CADEIRAS* len(dados.FILEIRA)
+
+    for e in eventos:
+        total += e.arrecadacao
+
+    return render_template('relatorio.html', eventos=eventos, total=total, publico=publico)

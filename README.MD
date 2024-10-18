@@ -1,5 +1,5 @@
 # Introdução
-
+flask --app app --debug run
 
 # Tabelas
 - Evento

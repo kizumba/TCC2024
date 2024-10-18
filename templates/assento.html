@@ -13,6 +13,9 @@
     {% endif %}
 </div>
 <hr>
+
+{% if assento.livre %}
+
 <h4>Inserir Valor do Ingresso</h4>
 <form action="/assento/{{fileira}}/{{numero}}/{{evento.id}}" method="post">
     <div class="input-group mb-3">
@@ -27,6 +30,7 @@
         </button>
 </form>
 <hr>
+{% else %}
 <h4>Liberar assento</h4>
 <form action="/assento_liberar/{{fileira}}/{{numero}}/{{evento.id}}"> 
     <button type="submit" class="btn btn-danger" 
@@ -34,6 +38,8 @@
             Liberar!
         </button>
 </form>
+
+{% endif %}
 <hr>
 <a class="btn btn-dark" href="{{url_for('evento',id=evento.id)}}" role="button">Evento {{evento.nome}}</a>
 {% endblock %}
